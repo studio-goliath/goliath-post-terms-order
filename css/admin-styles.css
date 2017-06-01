@@ -1,0 +1,18 @@
+.terms-draggable li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+.terms-draggable .text{
+    width: calc( 100% - 50px );
+}
+.terms-draggable .dashicons-dismiss{
+    cursor: pointer;
+}
+
+.terms-draggable .dashicons-sort{
+    margin-right: 10px;
+}
