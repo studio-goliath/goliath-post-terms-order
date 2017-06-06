@@ -19,11 +19,11 @@ function sg_sortable_tax_add_remove_meta_boxes() {
 
         if( $taxo->hierarchical ){
 
-            remove_meta_box( "{$taxo->name}div", $taxo->object_type);
+            remove_meta_box( "{$taxo->name}div", $taxo->object_type, 'side');
 
         } else{
 
-            remove_meta_box( "tagsdiv-{$taxo->name}", $taxo->object_type);
+            remove_meta_box( "tagsdiv-{$taxo->name}", $taxo->object_type, 'side');
         }
 
         add_meta_box( "{$taxo->name}-sortable", $taxo->label, 'sg_sortable_tax_meta_boxes', $taxo->object_type, 'side', 'default', $taxo );
