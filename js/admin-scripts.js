@@ -12,7 +12,6 @@ jQuery( function( $ ) {
     $sortableSelect.on({
         "select2:select":  function (e) {
 
-            console.log( e.target );
             var $currentSelect = $( e.target );
             var selectedOption = e.params.data;
 
@@ -43,7 +42,6 @@ jQuery( function( $ ) {
         var term_id = $('input', $parent ).val();
 
         var $select = $parent.parent().prevAll('.sortable-tax-select');
-        console.log( term_id, $select );
         $('option[value="'+ term_id + '"]', $select).removeAttr( 'disabled' );
         $select.select2( select2Options );
         $parent.remove();
