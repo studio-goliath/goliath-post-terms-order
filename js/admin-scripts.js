@@ -37,7 +37,7 @@ jQuery( function( $ ) {
     $('.terms-draggable').sortable().disableSelection();
 
     // Supression d'un term
-    $('.terms-draggable .dashicons-dismiss').on('click', function () {
+    $( document ).on('click', '.terms-draggable .dashicons-dismiss', function () {
 
         var $parent = $(this).parent();
         var term_id = $('input', $parent ).val();
