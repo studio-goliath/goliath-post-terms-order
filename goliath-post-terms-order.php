@@ -70,7 +70,7 @@ function sg_sortable_tax_meta_boxes( $post, $param ){
     }
     echo '</ul>';
 
-    wp_nonce_field( "sg-terms-sort-{$taxo->name}", 'sg-terms-sort-nonce-name' );
+    wp_nonce_field( "sg-terms-sort-action", 'sg-terms-sort-nonce-name' );
 }
 
 
@@ -92,8 +92,7 @@ function sg_sortable_tax_add_admin_script( $hook ) {
 
     foreach ( $sortable_taxo as $taxo ){
 
-        if( 'post.php' == $hook && in_array( $screen->post_type, $taxo->object_type ) ){
-            wp_enqueue_style( 'select2' );
+        if( in_array( $hook, array( 'post-new.php', 'post.php' ) ) && in_array( $screen->post_type, $taxo->object_type ) ){
             wp_enqueue_style( 'sg_sortable_tax_style' );
             wp_enqueue_script( 'sg_sortable_tax_scripts' );
         }
@@ -102,9 +101,13 @@ function sg_sortable_tax_add_admin_script( $hook ) {
 
 add_action( 'save_post', 'sg_save_taxo_sortable_metabox' );
 
-function sg_save_taxo_sortable_metabox( $post_id, $post, $updat ){
+function sg_save_taxo_sortable_metabox( $post_id ){
 
-    if( isset( $_POST['sg-terms-sort'] ) ) {
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+
+    if( isset( $_POST['sg-terms-sort'] ) && check_admin_referer( "sg-terms-sort-action", 'sg-terms-sort-nonce-name' ) ) {
         $sg_terms_sort = $_POST['sg-terms-sort'];
 
         foreach( $sg_terms_sort as $taxo => $terms ){
