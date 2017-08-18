@@ -18,7 +18,7 @@ jQuery( function( $ ) {
             var $ulSortable = $currentSelect.nextAll('.terms-draggable') ;
 
             $ulSortable.append( "<li>" +
-                "<input type='hidden' name='sg-terms-sort[" + e.target.getAttribute( 'id' ) + "][]' value='" + selectedOption.id + "' />" +
+                "<input type='hidden' name='sg-terms-sort[" + e.target.getAttribute( 'id' ) + "][]' value=\"" + selectedOption.id + "\" />" +
                 "<span class='dashicons dashicons-sort'></span>" +
                 "<span class='text'>" + selectedOption.text + "</span>" +
                 "<span class='dashicons dashicons-dismiss'></span>" +
