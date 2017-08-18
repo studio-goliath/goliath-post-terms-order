@@ -84,7 +84,7 @@ function sg_sortable_tax_add_admin_script( $hook ) {
     wp_register_script( 'select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js', array( 'jquery'), '4.0.3', true );
 
 
-    wp_register_script( 'sg_sortable_tax_scripts', plugin_dir_url( __FILE__ ) . 'js/admin-scripts.js', array( 'select2', 'jquery-ui-sortable' ), '1.0.0', true );
+    wp_register_script( 'sg_sortable_tax_scripts', plugin_dir_url( __FILE__ ) . 'js/admin-scripts.js', array( 'select2', 'jquery-ui-sortable' ), '1.0.1', true );
 
     $sortable_taxo = get_taxonomies( array( 'sort' => true ), 'objects'  );
 
